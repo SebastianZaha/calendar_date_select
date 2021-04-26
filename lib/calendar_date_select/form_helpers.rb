@@ -217,6 +217,14 @@ module CalendarDateSelect::FormHelpers
       end
       out
     end
+  
+    def options_for_javascript(options)
+      if options.empty?
+        '{}'
+      else
+        "{#{options.keys.map { |k| "#{k}:#{options[k]}" }.sort.join(', ')}}"
+      end
+    end
 
     def format_year_range(year) # nodoc
       return year unless year.respond_to?(:first)
